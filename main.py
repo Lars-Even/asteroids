@@ -8,7 +8,7 @@ def main():
     print("Screen height: "+ str(SCREEN_HEIGHT))
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     fps = pygame.time.Clock()
     dt = 0
@@ -21,11 +21,14 @@ def main():
                 return
 
 
+        player.update(dt)
+        
+        screen.fill((0,0,0))
+        player.draw(screen)
+        pygame.display.flip()
 
         dt = fps.tick(60) / 1000
 
-        screen.fill((0,0,0))
-        pygame.display.flip()
         
 
 
